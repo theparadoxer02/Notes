@@ -38,7 +38,7 @@ def showNotes(request,pk):
     except PageNotAnInteger:
         notes = paginator.page(1)
     except EmptyPage:
-        notes = paginator.page(paginator.num_pages) 
+        notes = paginator.page(paginator.num_pages)
     return render(request,'note.html',{'notes':notes})
 
 
@@ -47,7 +47,7 @@ def addNotes(request):
         if request.method == "POST":
             form = notesform(request.POST,request.FILES)
             if form.is_valid():
-                profile = Note()               
+                profile = Note()
                 profile.year = form.cleaned_data["year"]
                 profile.branch = form.cleaned_data["branch"]
                 profile.subject_name = form.cleaned_data["subject_name"]
@@ -108,12 +108,10 @@ def search(request):
 def notes_delete(request,id):
     obj = get_object_or_404(Note,id=id)
     #if request.method == "POST":
-    
+
     #messages.success(request, "This has been deleted.")
     #return HttpResponseRedirect('/search/')
     context = { "object":obj }
     obj.delete()
     return render(request,"delete_success.html",context)
     #return render(request,"confirm_delete.html",context)
-
-

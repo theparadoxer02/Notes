@@ -4,7 +4,7 @@ from .models import Post,Comment
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'text',"image","draft") 
+        fields = ('title', 'text',"image","draft")
 
 class EmailForm(forms.Form):
 	subject = forms.CharField(required=True,max_length=20)

@@ -1,0 +1,13 @@
+json ={
+  'CSE':
+  {
+    'First':
+    {
+        'Physics','Chemistry','Electronics','Electrical'
+    }
+    ,'Second':
+    {
+        'Operating System', 'Data Structure'
+    }
+  }
+}
