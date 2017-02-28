@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br>
+<br>
+<br>
+	<div class = "container">
+		<div class="row">
+			<div class='col-sm-6 col-sm-offset-3'>
+				<form method="POST" action="/note/search/">{% csrf_token %}
+					{{ form|crispy }}
+					<input class="btn btn-default" type="submit" value="Submit" />
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div id = result>
+        {% if notes %}
+            <ul>
+            <div class="row">
+				<div class='col-sm-6 col-sm-offset-3'>
+	                {% for note in notes %}
+	                	<img src ="{{ note.picture.url }}" alt="picture" height="150px" width="140px">
+	                	{% if request.user.is_authenticated %}
+	                	<a href="#" onclick ="deleteNote({{note.id}})"> delete </a>
+	                	{% endif %}
+	                {% endfor %}
+	                <br />
+	                <div class="pagination">
+					    <span class="step-links">
+					        {% if notes.has_previous %}
+					            <a href="?page={{ .previous_page_number }}">previous</a>
+					        {% endif %}
+
+					        <span class="current">
+					            Page {{ notes.number }} of {{ notes.paginator.num_pages }}.
+					        </span>
+
+					        {% if notes.has_next %}
+					            <a href="?page={{ notes.next_page_number }}">next</a>
+					        {% endif %}
+					    </span>
+					</div>
+				</div>
+			</div>
+
+            </ul>
+        {% else %}
+            <p>No documents.</p>
+        {% endif %}
+    
+ 	</div>
+
+<style>
+	.result{
+		text-align: left;
+	}
+</style>
+<script>
+	function deleteNote(param) {
+		var cnfm = confirm("Are you sure want to delete ?")
+		if (cnfm == true)
+		{
+			url = "/"+param+"/delete";
+			window.location.assign(url);
+		}
+	}
+</script>
+
+{% endblock %}
