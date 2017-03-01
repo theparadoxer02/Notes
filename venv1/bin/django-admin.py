@@ -1,4 +1,4 @@
-#!/home/abhi/Desktop/Notes/venv1/bin/python2
+#!/home/abhi/Desktop/Notes2/venv1/bin/python2
 from django.core import management
 
 if __name__ == "__main__":
