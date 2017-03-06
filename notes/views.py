@@ -29,6 +29,7 @@ def showNotes(request,pk):
             'branch'  : branch,
             'unit'    : unit,
             }
+
     notes = Note.objects.all()
     paginator = Paginator(notes, 4)
     page = request.GET.get('page')
