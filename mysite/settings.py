@@ -85,7 +85,18 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
+if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/cloudsql/notes-161019:notes12345',
+            'NAME': 'Notes',
+            'USER': 'abhi',
+            'PASSWORD': 'root',
+        }
+    }
+else:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Notes',
@@ -95,6 +106,7 @@ DATABASES = {
         'PORT': '',
     }
 }
+
 
 
 # Password validation
