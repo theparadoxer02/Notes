@@ -98,12 +98,12 @@ if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
 else:
     DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Notes',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'notes',
         'USER': 'abhi',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '',
+        #'PASSWORD': 'root',
+        #'HOST': 'localhost',
+        #'PORT': '',
     }
 }
 
@@ -188,12 +188,11 @@ LOGIN_REDIRECT_URL = '/'
 print(BASE_DIR)
 print(MEDIA_ROOT)
 
-#import  dj_database_url
+import  dj_database_url
 #DATABASES['default'] = dj_database_url.config()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO',  'https')
 ALLOWED_HOSTS = ['*']
-DEBUG = False
 try:
     from .local_settings import *
 except ImportError:
-    pass
+     pass
