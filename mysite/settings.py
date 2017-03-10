@@ -87,9 +87,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gniot',
-        'USER': 'admin',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Notes',
+        'USER': 'abhi',
         'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '',
@@ -132,13 +132,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 
 STATIC_URL = '/static/'
@@ -183,8 +176,8 @@ LOGIN_REDIRECT_URL = '/'
 print(BASE_DIR)
 print(MEDIA_ROOT)
 
-import  dj_database_url
-DATABASES['default'] = dj_database_url.config()
+#import  dj_database_url
+#DATABASES['default'] = dj_database_url.config()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO',  'https')
 ALLOWED_HOSTS = ['*']
 DEBUG = False
