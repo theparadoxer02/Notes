@@ -7,7 +7,7 @@ To deploy over the local system .
 
 [2]. cd Notes/
 
-[3]. source venv1/bin/activate
+[3] pip install -r requirements.txt
 
 [4] python manage.py makemigrations
 
